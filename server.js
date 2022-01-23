@@ -1,7 +1,7 @@
 //Import the express and url modules
 let express = require('express');
 let url = require("url");
-
+const port = process.env.PORT || 3000
 //Status codes defined in external file
 require('./http_status.js');
 
@@ -31,7 +31,7 @@ app.get('/products', handleProductGet);
 app.get('/search/*', handleProductGet);
 
 //Start the app listening on port 8080
-app.listen(8080);
+app.listen(port);
 
 
 /* Handles GET request sent to products path
