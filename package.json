@@ -1,7 +1,6 @@
 {
   "name": "javascript",
   "version": "1.0.0",
-  "description": "",
   "main": "callback_example.js",
   "scripts": {
     "test": "mocha",
@@ -20,5 +19,18 @@
     "mysql": "^2.18.1",
     "request": "^2.88.2",
     "vue-plain-pagination": "^0.3.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toystorya705/javascriptWebscraping.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toystorya705/javascriptWebscraping/issues"
+  },
+  "homepage": "https://github.com/toystorya705/javascriptWebscraping#readme",
+  "description": ""
 }
