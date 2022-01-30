@@ -22,7 +22,6 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toystorya705/javascriptWebscraping.git"
