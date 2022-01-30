@@ -29,7 +29,7 @@ let app = new Vue({
                     this.showSmallSearchBar = true;
                     this.sortOption=false;
                     this.bannerSearch = false;
-                    response = await axios.get('/search/' + this.filter);
+                    response = await fetch('/search/' + this.filter);
                     this.pageIndex=1;
                     this.product = response.data.data;
                     console.log(response.data);
