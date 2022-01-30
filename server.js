@@ -13,7 +13,7 @@ let mysql = require('mysql');
 
 //Create a connection object with the user details
 let connectionPool = mysql.createPool({
-    connectionLimit: 2,
+    connectionLimit: 5,
     host: "us-cdbr-east-05.cleardb.net",
     user: "b67e51b20bac08",
     password: "7989faea",
