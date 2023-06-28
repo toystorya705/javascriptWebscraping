@@ -14,11 +14,10 @@ let mysql = require('mysql');
 //Create a connection object with the user details
 let connectionPool = mysql.createPool({
     connectionLimit: 5,
-    host: "us-cdbr-east-05.cleardb.net",
-    user: "b67e51b20bac08",
-    password: "7989faea",
-    database: "heroku_9c832597e276ce9",
-    debug: false
+    host: "containers-us-west-178.railway.app",
+    user: "root",
+    password: "LnHw7odb9OqtYLK67OeT",
+    database: "railway", debug: false
 });
 
 mysql://b67e51b20bac08:7989faea@us-cdbr-east-05.cleardb.net/heroku_9c832597e276ce9?reconnect=true
