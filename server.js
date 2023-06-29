@@ -12,14 +12,31 @@ let app = express();
 let mysql = require('mysql');
 
 //Create a connection object with the user details
-let connectionPool = mysql.createPool({
-    connectionLimit: 5,
+let connectionPool = mysql.createConnection({
     host: "containers-us-west-178.railway.app",
     user: "root",
     password: "LnHw7odb9OqtYLK67OeT",
-    database: "railway", debug: false
+    database: "railway", 
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+    port:7251
 });
-
+var con = mysql.createConnection({
+    host: "containers-us-west-178.railway.app",
+    user: "root",
+    password: "LnHw7odb9OqtYLK67OeT",
+    database: "railway", 
+    port:7251
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
+  
+  
+  
 mysql://b67e51b20bac08:7989faea@us-cdbr-east-05.cleardb.net/heroku_9c832597e276ce9?reconnect=true
 
 app.use(express.static("public"));
@@ -72,7 +89,7 @@ async function handleProductGet(request, response) {
             //We know it is search
             //path end should contain the search term
             let totalProdCount = await getProductCount();
-
+console.log(totalProdCount)
             let searchResults = await getSearch(pathEnd);
             if(numItems===undefined||offset===undefined) {
                 numItems = 12;// Default numitem value
@@ -116,10 +133,12 @@ exports.getSearch=getSearch;
 /** Returns a promise to get the total number of products */
 async function getProductCount() {
     //Build SQL query
-    let sql = "SELECT COUNT(*) FROM products";
+    console.log("wwwwwwwwwwwwwwwwwww")
+    let sql = "SELECT COUNT(*) FROM products FLUSH PRIVILEGES;";
 
     //Execute promise to run query
     let result = await executeQuery(sql);
+    console.log(result)
 
     //Extract the data we need from the result
     return result[0]["COUNT(*)"];
@@ -152,7 +171,6 @@ async function getProduct(prodId) {
 
 
 
-
 /** Wraps connection pool query in a promise and returns the promise */
 async function executeQuery (sql){
     //Wrap query around promise
@@ -168,7 +186,7 @@ async function executeQuery (sql){
             resolve(result);
         });
     });
-
+console.lof("ffff",queryPromise)
     //Return promise
     return queryPromise;
 }
